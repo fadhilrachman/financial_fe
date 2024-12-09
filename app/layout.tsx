@@ -6,6 +6,7 @@ import "../styles/overide.css";
 import React from "react";
 import Provider from "@/lib/provider";
 import { nunito, montserrat } from "@/lib/font";
+import Navbar from "@/components/shared/navbar";
 
 const RootLayout = ({ children }: React.PropsWithChildren) => (
   <html lang="en">
