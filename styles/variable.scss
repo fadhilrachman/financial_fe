@@ -7,3 +7,7 @@ $font-montserrat: var(--font-montserrat);
 .font-montserrat {
   font-family: $font-montserrat !important;
 }
+
+.ant-form-item-label > label {
+  font-family: $font-nunito;
+}

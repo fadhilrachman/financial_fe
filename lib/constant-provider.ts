@@ -3,4 +3,5 @@ export const CONSTANT_PROVIDER = {
   bgColor: "#1F2937",
   primaryColor: "#008080",
   borderColor: "#4B5563",
+  primaryColorForm: "#98EC65",
 };

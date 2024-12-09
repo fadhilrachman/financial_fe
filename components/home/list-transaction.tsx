@@ -14,7 +14,7 @@ const ListTransaction = () => {
         return (
           <div className="text-sm space-y-2">
             <div className="flex justify-between items-center">
-              <h3 className="font-semibold text-base">12 September 2024</h3>
+              <h3 className="font-medium text-base">12 September 2024</h3>
               <BaseButton
                 type="primary"
                 icon={<PlusOutlined />}

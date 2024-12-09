@@ -82,7 +82,7 @@ const FormGenerator = ({
       layout={layout}
       onFinish={onSubmit}
       disabled={disabled}
-      className={className}
+      className={`${className}`}
       id={id}
     >
       {dataForm.map((val, key) => {

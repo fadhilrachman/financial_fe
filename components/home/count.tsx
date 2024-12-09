@@ -9,7 +9,7 @@ import "swiper/css/effect-cards";
 
 // import required modules
 import { EffectCards } from "swiper/modules";
-import { ArrowUpOutlined } from "@ant-design/icons";
+import { ArrowUpOutlined, BellFilled } from "@ant-design/icons";
 import { TbTrendingUp } from "react-icons/tb";
 
 export default function Count() {
@@ -22,36 +22,137 @@ export default function Count() {
         className="mySwiper mt-6"
       >
         <SwiperSlide className="bg-textColor  text-white px-8 py-4 rounded-2xl">
-          <h2 className="text-zinc-400 text-sm">Total Saldo</h2>
-          <div className="space-y-3">
-            <p className="text-3xl font-semibold">$ 32.000.000</p>
-            <div className="inline-flex items-center gap-1 text-xs bg-secondary text-zinc-900 px-2 py-1 rounded-md">
-              <TbTrendingUp className="w-3 h-3" />
-              <span>70% dari bulan lalu</span>
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center gap-2">
+              <svg
+                className="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M2 10h20" />
+              </svg>
+              <span className="font-medium">Main Wallet</span>
+              <svg
+                className="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <div className="text-sm mb-1">Total Pengeluaran</div>
+              <div className="text-4xl font-bold">$62,588.05</div>
+              <div className="flex items-center gap-2 text-blue-500 mt-1">
+                <svg
+                  className="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M18 15l-6-6-6 6" />
+                </svg>
+                <span>8.82% (+$970)</span>
+              </div>
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide className="bg-secondary  text-white px-8 py-4 rounded-2xl">
-          <h2 className="text-zinc-600 text-sm">Total Pemasukan</h2>
-          <div className="space-y-3">
-            <p className="text-3xl font-semibold text-textColor">
-              $ 32.000.000
-            </p>
-            <div className="inline-flex items-center gap-1 text-xs bg-textColor text-white px-2 py-1 rounded-md">
-              <TbTrendingUp className="w-3 h-3" />
-              <span>70% dari bulan lalu</span>
+        <SwiperSlide className="bg-secondary  text-textColor px-8 py-4 rounded-2xl">
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center gap-2">
+              <svg
+                className="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M2 10h20" />
+              </svg>
+              <span className="font-medium">Main Wallet</span>
+              <svg
+                className="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <div className="text-sm mb-1">Total Pengeluaran</div>
+              <div className="text-4xl font-bold">$62,588.05</div>
+              <div className="flex items-center gap-2 text-red-500 mt-1">
+                <svg
+                  className="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M18 15l-6-6-6 6" />
+                </svg>
+                <span>8.82% (+$970)</span>
+              </div>
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide className="bg-third text-white px-8 py-4 rounded-2xl">
-          <h2 className="text-zinc-600 text-sm">Total Pengeluaran</h2>
-          <div className="space-y-3">
-            <p className="text-3xl font-semibold text-textColor">
-              $ 32.000.000
-            </p>
-            <div className="inline-flex items-center gap-1 text-xs bg-textColor  px-2 py-1 rounded-md">
-              <TbTrendingUp className="w-3 h-3" />
-              <span>70% dari bulan lalu</span>
+        <SwiperSlide className="bg-third  text-textColor px-8 py-4 rounded-2xl">
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center gap-2">
+              <svg
+                className="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M2 10h20" />
+              </svg>
+              <span className="font-medium">Main Wallet</span>
+              <svg
+                className="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <div className="text-sm mb-1">Total Pengeluaran</div>
+              <div className="text-4xl font-bold">$62,588.05</div>
+              <div className="flex items-center gap-2 text-blue-50 mt-1">
+                <svg
+                  className="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M18 15l-6-6-6 6" />
+                </svg>
+                <span>8.82% (+$970)</span>
+              </div>
             </div>
           </div>
         </SwiperSlide>
