@@ -3,7 +3,7 @@ import { ButtonType } from "antd/es/button";
 import React from "react";
 
 interface Props extends ButtonProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   //   type:  ...ButtonType
 }
 
@@ -14,7 +14,7 @@ const BaseButton = ({ ...props }: Props) => {
   return (
     <Button
       {...props}
-      className={` opacity-95 ${props.type} ${props.className}`}
+      className={` opacity-95 border-none shadow-none ${props.type} ${props.className}`}
     >
       {props.children}
     </Button>

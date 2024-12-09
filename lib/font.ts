@@ -1,4 +1,10 @@
-import { Roboto, Pacifico, Nunito_Sans } from "next/font/google";
+import {
+  Roboto,
+  Pacifico,
+  Nunito_Sans,
+  Montserrat,
+  Poppins,
+} from "next/font/google";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -6,11 +12,11 @@ const nunito = Nunito_Sans({
   weight: ["400", "700"],
 });
 
-const pacifico = Pacifico({
+const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-pacifico",
-  weight: ["400"],
+  variable: "--font-montserrat",
+  weight: ["400", "100", "200", "300", "500", "600", "700", "800", "900"],
 });
 
 const roboto = Roboto({
@@ -19,4 +25,4 @@ const roboto = Roboto({
   weight: ["400", "700"],
 });
 
-export { nunito, roboto, pacifico };
+export { nunito, roboto, montserrat };

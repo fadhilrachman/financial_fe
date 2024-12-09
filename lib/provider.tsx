@@ -3,7 +3,6 @@ import React from "react";
 import { createCache, extractStyle, StyleProvider } from "@ant-design/cssinjs";
 import { ConfigProvider } from "antd";
 import { Nunito_Sans } from "next/font/google";
-import { nunito, roboto, pacifico } from "./font";
 import { CONSTANT_PROVIDER } from "./constant-provider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -33,8 +32,8 @@ const Provider = ({ children }: React.PropsWithChildren) => {
             token: {
               // colorBgBase: "#4B5563",
               // color
-              colorPrimary: "#008080",
-              fontFamily: `var(${nunito.variable}), var(${roboto.variable}), var(${pacifico.variable})`,
+              colorPrimary: "#333333",
+              // fontFamily: `var(${nunito.variable}), var(${roboto.variable}), var(${pacifico.variable})`,
             },
             components: {
               Card: {

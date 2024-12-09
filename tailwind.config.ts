@@ -10,12 +10,12 @@ const config: Config = {
     extend: {
       colors: {
         customOrange: "#f0b37e",
-        background: "var(--background)",
+        background: "#F5F5F0",
         foreground: "var(--foreground)",
         primary: "#008080",
-        secondary: "#EAB308",
-        third: "#2E4747",
-        textColor: "#9CA3AF",
+        secondary: "#98EC65",
+        third: "#FFD6AD",
+        textColor: "#333333",
         borderColor: "#4B5563",
       },
     },
