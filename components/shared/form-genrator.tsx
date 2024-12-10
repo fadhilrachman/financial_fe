@@ -8,6 +8,7 @@ import {
   notification,
   Spin,
   Checkbox,
+  Select,
 } from "antd";
 import { Rule } from "antd/es/form";
 import { FormLayout } from "antd/es/form/Form";
@@ -18,7 +19,15 @@ import React from "react";
 import { TbTrashFilled } from "react-icons/tb";
 
 export interface DataFormType {
-  type: "text" | "email" | "file" | "textarea" | "checkbox" | "date" | "number";
+  type:
+    | "text"
+    | "email"
+    | "file"
+    | "textarea"
+    | "checkbox"
+    | "date"
+    | "number"
+    | "select";
   name: string;
   rules?: Rule[];
   label?: string;
@@ -27,6 +36,7 @@ export interface DataFormType {
   readOnly?: boolean;
   bottomCustom?: React.ReactNode;
   addonBefore?: React.ReactNode;
+  options?: { value: string; label: React.ReactNode }[];
 }
 export interface FormGeneratorType {
   form: FormInstance;
@@ -152,6 +162,24 @@ const FormGenerator = ({
               key={key}
             >
               <Checkbox>Checkbox</Checkbox>
+            </Form.Item>
+          );
+        }
+
+        if (val.type == "select") {
+          return (
+            <Form.Item
+              name={val.name}
+              label={val.label}
+              rules={val?.rules}
+              key={key}
+            >
+              <Select
+                options={val.options}
+                placeholder={val.placeholder}
+                disabled={val?.disabled}
+                allowClear
+              />
             </Form.Item>
           );
         }

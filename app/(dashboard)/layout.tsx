@@ -28,7 +28,6 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   ];
   return (
     <div className="relative pb-12">
-      <Navbar />
       {children}
       <div className="fixed w-full bottom-0  left-0  ">
         <div className="bg-background shadow-2xl flex justify-between shadow-black max-w-[420px] py-2 px-12 mx-auto">

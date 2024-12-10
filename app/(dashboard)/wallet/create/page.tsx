@@ -13,7 +13,7 @@ const CreateWallet = () => {
     <div>
       <div className="flex items-center space-x-2">
         <ButtonBack route="/wallet" />
-        <h3 className="text-2xl my-4">Create Wallet</h3>
+        <h3 className="text-xl my-4">Create Wallet</h3>
       </div>
       <FormGenerator
         form={form}

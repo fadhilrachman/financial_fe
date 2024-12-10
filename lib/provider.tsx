@@ -56,19 +56,18 @@ const Provider = ({ children }: React.PropsWithChildren) => {
                 algorithm: true, // Enable algorithm
               },
               DatePicker: {
-                colorPrimary: "#4B5563",
-                colorText: CONSTANT_PROVIDER.textColor,
-                activeBorderColor: CONSTANT_PROVIDER.textColor,
-                colorBorder: "#4B5563",
-                colorTextPlaceholder: "#4B5563",
-                colorBgBase: CONSTANT_PROVIDER.bgColor,
-                colorTextLabel: CONSTANT_PROVIDER.textColor,
+                colorPrimary: CONSTANT_PROVIDER.primaryColorForm,
                 algorithm: true,
               },
               Checkbox: {
                 colorText: CONSTANT_PROVIDER.textColor,
               },
 
+              Select: {
+                colorPrimary: CONSTANT_PROVIDER.primaryColorForm,
+                // colorText: CONSTANT_PROVIDER.textColor,
+                activeBorderColor: CONSTANT_PROVIDER.primaryColorForm,
+              },
               // Progress: {
               //   colorText: CONSTANT_PROVIDER.textColor,
               // },
