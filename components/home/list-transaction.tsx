@@ -23,9 +23,9 @@ const ListTransaction = ({ data }: { data: GroupingByDateTransactionType }) => {
 
   return (
     <div className="space-y-8">
-      {finallyResult.map((val) => {
+      {finallyResult.map((val, key) => {
         return (
-          <div className="text-sm space-y-2">
+          <div className="text-sm space-y-2" key={key}>
             <div className="flex justify-between items-center">
               <h3 className="font-medium text-base">
                 {moment(val).format("DD MMMM YYYY")}

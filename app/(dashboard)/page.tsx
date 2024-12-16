@@ -8,27 +8,43 @@ import { PlusOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import FilterTransaction from "@/components/home/filter-transaction";
 import { useStorage } from "@/stores/storage.stores";
-import { useGetTransaction } from "@/hooks/transaction.hook";
+import {
+  useGetCountTransaction,
+  useGetTransaction,
+} from "@/hooks/transaction.hook";
 import LoadingSkeleton from "@/components/home/loading-transaction";
 
 const Home = () => {
   const router = useRouter();
   const { walletId }: any = useStorage();
+  const { data: dataCountTransaction, refetch: refetchCountTransaction } =
+    useGetCountTransaction({
+      month: "12",
+      year: "2024",
+      wallet_id: walletId as string,
+    });
   const { data, refetch, isFetching } = useGetTransaction({
     page: 1,
     per_page: 20,
     wallet_id: walletId,
   });
 
+  console.log({ dataCountTransaction });
+
   useEffect(() => {
     refetch();
+    refetchCountTransaction();
   }, [walletId]);
 
   return (
     <div className="space-y-6 relative">
       <Navbar />
       <FilterTransaction />
-      <Count />
+      <Count
+        totalExpense={dataCountTransaction?.result.expense || 0}
+        totalIncome={dataCountTransaction?.result.income || 0}
+        totalMoney={dataCountTransaction?.result.money_total || 0}
+      />
       {isFetching ? (
         <LoadingSkeleton />
       ) : (

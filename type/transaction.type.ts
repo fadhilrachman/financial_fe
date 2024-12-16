@@ -1,3 +1,9 @@
+export interface CountTransactionType {
+  income: number;
+  expense: number;
+  money_total: number;
+}
+
 export interface PostTransactionType {
   description?: string;
   count: number;

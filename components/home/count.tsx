@@ -11,8 +11,17 @@ import "swiper/css/effect-cards";
 import { EffectCards } from "swiper/modules";
 import { ArrowUpOutlined, BellFilled } from "@ant-design/icons";
 import { TbTrendingUp } from "react-icons/tb";
+import { formatRupiah } from "@/lib/utils";
 
-export default function Count() {
+export default function Count({
+  totalMoney,
+  totalExpense,
+  totalIncome,
+}: {
+  totalMoney: number;
+  totalExpense: number;
+  totalIncome: number;
+}) {
   return (
     <>
       <Swiper
@@ -27,8 +36,10 @@ export default function Count() {
         <SwiperSlide className="bg-textColor pt-8  text-white px-8 py-4 rounded-2xl">
           <div className="space-y-4">
             <div>
-              <div className="text-sm mb-1">Total Pengeluaran</div>
-              <div className="text-4xl font-bold">$62,588.05</div>
+              <div className="text-sm mb-1">Money Total</div>
+              <div className="text-4xl font-bold">
+                {formatRupiah(totalMoney)}
+              </div>
               <div className="flex items-center gap-2 text-blue-500 mt-1">
                 <svg
                   className="w-4 h-4"
@@ -47,8 +58,10 @@ export default function Count() {
         <SwiperSlide className="bg-secondary pt-8  text-textColor px-8 py-4 rounded-2xl">
           <div className="space-y-4">
             <div>
-              <div className="text-sm mb-1">Total Pengeluaran</div>
-              <div className="text-4xl font-bold">$62,588.05</div>
+              <div className="text-sm mb-1">Income Total</div>
+              <div className="text-4xl font-bold">
+                {formatRupiah(totalIncome)}
+              </div>
               <div className="flex items-center gap-2 text-red-500 mt-1">
                 <svg
                   className="w-4 h-4"
@@ -67,8 +80,10 @@ export default function Count() {
         <SwiperSlide className="bg-third pt-8  text-textColor px-8 py-4 rounded-2xl">
           <div className="space-y-4">
             <div>
-              <div className="text-sm mb-1">Total Pengeluaran</div>
-              <div className="text-4xl font-bold">$62,588.05</div>
+              <div className="text-sm mb-1">Expense Total</div>
+              <div className="text-4xl font-bold">
+                {formatRupiah(totalExpense)}
+              </div>
               <div className="flex items-center gap-2 text-blue-50 mt-1">
                 <svg
                   className="w-4 h-4"

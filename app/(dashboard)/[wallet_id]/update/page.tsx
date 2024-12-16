@@ -78,7 +78,6 @@ const UpdateTransaction = () => {
         <ButtonBack route="/" />
         <h3 className="text-xl my-4">Update Record</h3>
       </div>
-      {/* {successCount} */}
       <FormGenerator
         form={form}
         id="form"

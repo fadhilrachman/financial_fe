@@ -12,7 +12,11 @@ import {
   BaseResponseDetailType,
   BaseResponseListType,
 } from "@/type/shared.type";
-import { PostTransactionType, TransactionType } from "@/type/transaction.type";
+import {
+  CountTransactionType,
+  PostTransactionType,
+  TransactionType,
+} from "@/type/transaction.type";
 import moment from "moment-timezone";
 function groupDataTransaction(data: TransactionType[]) {
   return data.reduce((result: any, item) => {
@@ -66,6 +70,22 @@ export const useGetTransaction = (params: {
         pagination: result.data.pagination,
         result: groupDataTransaction(result?.data?.result),
       };
+    },
+  });
+
+  return query;
+};
+export const useGetCountTransaction = (params: {
+  month: string;
+  year: string;
+  wallet_id: string;
+}) => {
+  const query = useQuery<BaseResponseDetailType<CountTransactionType>>({
+    queryKey: ["COUNT_TRANSACTION"],
+    queryFn: async () => {
+      const result = await fetcher.get("/transaction/count", { params });
+
+      return result.data;
     },
   });
 
