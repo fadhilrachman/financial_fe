@@ -5,46 +5,84 @@ import ButtonBack from "@/components/shared/button-back";
 import FormGenerator from "@/components/shared/form-genrator";
 import IconComponent from "@/components/shared/icon-component";
 import { useGetCategory } from "@/hooks/category.hook";
-import { usePostTransaction } from "@/hooks/transaction.hook";
+import {
+  useGetDetailTransaction,
+  usePostTransaction,
+  useUpdateTransaction,
+} from "@/hooks/transaction.hook";
 import { PlusOutlined, UserAddOutlined } from "@ant-design/icons";
 import { Form } from "antd";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-
+import dayjs from "dayjs";
 const UpdateTransaction = () => {
   const router = useRouter();
   const { wallet_id } = useParams();
   const [modal, setModal] = useState({ createCategory: false });
   const [form] = Form.useForm();
-  const { mutateAsync, status } = usePostTransaction();
-  const { data, isFetching, refetch } = useGetCategory({
+
+  const { mutateAsync, status } = useUpdateTransaction({
+    transaction_id: wallet_id as string,
+  });
+  const {
+    data,
+    isFetching,
+    refetch,
+    status: statusCategory,
+    failureCount,
+    successCount,
+  } = useGetCategory({
     page: 1,
     per_page: 100,
     type: form.getFieldValue("type"),
   });
-  const optionsCategory = data?.result?.map((val) => ({
-    label: val?.name,
-    value: val?.id,
-  }));
+
+  const {
+    data: dataTransaction,
+    status: statusTransaction,
+    isFetching: isFetchingTransaction,
+  } = useGetDetailTransaction({
+    transaction_id: wallet_id as string,
+  });
+
+  const finallyData = dataTransaction?.result;
 
   const handleSubmit = async (val: any) => {
-    await mutateAsync({ ...val, wallet_id });
-    // router.push('/')
+    await mutateAsync({ ...val });
+    router.push("/");
   };
   useEffect(() => {
-    refetch();
-    form.setFieldValue("category_id", undefined);
+    if (successCount > 1) {
+      refetch();
+      form.setFieldValue("category_id", undefined);
+    }
   }, [Form.useWatch("type", form)]);
+
+  useEffect(() => {
+    if (successCount == 1) {
+      refetch();
+    }
+  }, [successCount]);
+  useEffect(() => {
+    if (!isFetchingTransaction) {
+      form.setFieldValue("type", finallyData?.type);
+      form.setFieldValue("category_id", finallyData?.category.id);
+      form.setFieldValue("date", dayjs(finallyData?.date));
+      form.setFieldValue("count", finallyData?.count);
+      form.setFieldValue("description", finallyData?.description);
+    }
+  }, [isFetchingTransaction]);
   return (
     <div>
       <div className="flex items-center space-x-2">
         <ButtonBack route="/" />
         <h3 className="text-xl my-4">Update Record</h3>
       </div>
+      {/* {successCount} */}
       <FormGenerator
         form={form}
         id="form"
-        disabled={status == "pending"}
+        disabled={status == "pending" && isFetchingTransaction}
         onSubmit={handleSubmit}
         dataForm={[
           {
@@ -84,7 +122,7 @@ const UpdateTransaction = () => {
             label: "Category",
             placeholder: "Category",
             loading: isFetching,
-            disabled: isFetching || !form.getFieldValue("type"),
+            // disabled: isFetching || !form.getFieldValue("type"),
             dropdownRender: (menu) => {
               return (
                 <div className="z-10">

@@ -13,7 +13,10 @@ export interface TransactionType {
   count: number;
   date: Date;
   created_at: Date;
-  wallet_id: string;
+  wallet: {
+    id: string;
+    name: string;
+  };
   type: "income" | "expense";
   category: {
     id: string;

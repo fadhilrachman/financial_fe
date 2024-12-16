@@ -5,7 +5,7 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 import { fetcher } from "@/lib/fetcher";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
 import * as Cookie from "cookies-js";
 import { useRouter } from "next/navigation";
@@ -54,13 +54,15 @@ export const useGetCategory = (params: {
   per_page: number;
   type?: string;
 }) => {
+  const [successCount, setSuccessCount] = useState(0);
   const query = useQuery<BaseResponseListType<any>>({
     queryKey: ["LIST_CATEGORY"],
     queryFn: async () => {
       const result = await fetcher.get("/category", { params });
+      setSuccessCount((prev) => prev + 1);
       return result.data;
     },
   });
 
-  return query;
+  return { ...query, successCount };
 };
