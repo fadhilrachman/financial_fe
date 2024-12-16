@@ -3,6 +3,7 @@ import BaseButton from "@/components/shared/base-button";
 import Navbar from "@/components/shared/navbar";
 import CountTransaction from "@/components/wallet/count-transaction";
 import ListWallet from "@/components/wallet/list-wallet";
+import { useGetWallet } from "@/hooks/wallet.hook";
 import { PlusOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import React from "react";

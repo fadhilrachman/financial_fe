@@ -42,9 +42,9 @@ const Provider = ({ children }: React.PropsWithChildren) => {
                 colorTextHeading: CONSTANT_PROVIDER.textColor,
               },
               Modal: {
-                colorBgBase: CONSTANT_PROVIDER.bgColor,
-                colorBgContainer: CONSTANT_PROVIDER.bgColor,
-                contentBg: CONSTANT_PROVIDER.bgColor,
+                // colorBgBase: CONSTANT_PROVIDER.bgColor,
+                // colorBgContainer: CONSTANT_PROVIDER.bgColor,
+                // contentBg: CONSTANT_PROVIDER.bgColor,
               },
               Input: {
                 colorPrimary: CONSTANT_PROVIDER.primaryColorForm,
@@ -80,14 +80,12 @@ const Provider = ({ children }: React.PropsWithChildren) => {
                 colorPrimaryBg: CONSTANT_PROVIDER.bgColor,
               },
               InputNumber: {
-                colorPrimary: "#4B5563",
-                colorText: CONSTANT_PROVIDER.textColor,
-                activeBorderColor: CONSTANT_PROVIDER.textColor,
-                colorBorder: "#4B5563",
-                colorTextPlaceholder: "#4B5563",
-                colorBgBase: CONSTANT_PROVIDER.bgColor,
-                colorTextLabel: CONSTANT_PROVIDER.textColor,
-                algorithm: true, // Enable algorithm
+                colorPrimary: CONSTANT_PROVIDER.primaryColorForm,
+                // colorText: CONSTANT_PROVIDER.textColor,
+                // activeBorderColor: CONSTANT_PROVIDER.primaryColorForm,
+                // colorBorder: "#4B5563",
+                // colorTextPlaceholder: "#4B5563",
+                // colorBgBase: CONSTANT_PROVIDER.bgCo
               },
               Form: {
                 fontFamily: "font-nunito",

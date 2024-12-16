@@ -21,7 +21,7 @@ export const useLogin = () => {
       const { data } = mutation;
       notification.success({ message: "Login Sukses" });
       Cookie.set(process.env.COOKIE_NAME || "", data?.result?.token);
-      navigate.push("/cms/home");
+      navigate.push("/");
     }
 
     if (status == "error") {

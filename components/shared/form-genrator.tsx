@@ -1,4 +1,5 @@
 import { usePostFile } from "@/hooks/file.hook";
+import { currencyFormat } from "@/lib/helper";
 import { DeleteFilled, FileFilled, InboxOutlined } from "@ant-design/icons";
 import {
   Form,
@@ -9,13 +10,14 @@ import {
   Spin,
   Checkbox,
   Select,
+  InputNumber,
 } from "antd";
 import { Rule } from "antd/es/form";
 import { FormLayout } from "antd/es/form/Form";
 import TextArea from "antd/es/input/TextArea";
 import { UploadChangeParam, UploadFile } from "antd/es/upload";
 import Dragger from "antd/es/upload/Dragger";
-import React from "react";
+import React, { JSXElementConstructor, ReactElement } from "react";
 import { TbTrashFilled } from "react-icons/tb";
 
 export interface DataFormType {
@@ -27,10 +29,16 @@ export interface DataFormType {
     | "checkbox"
     | "date"
     | "number"
+    | "password"
+    | "numberwithcurrency"
     | "select";
   name: string;
   rules?: Rule[];
   label?: string;
+  loading?: boolean;
+  dropdownRender?: (
+    menu: ReactElement<any, string | JSXElementConstructor<any>>
+  ) => ReactElement<any, string | JSXElementConstructor<any>>;
   placeholder?: string;
   disabled?: boolean;
   readOnly?: boolean;
@@ -176,9 +184,13 @@ const FormGenerator = ({
             >
               <Select
                 options={val.options}
+                showSearch
                 placeholder={val.placeholder}
-                disabled={val?.disabled}
+                disabled={val?.disabled || val.loading}
+                loading={val?.loading}
                 allowClear
+                size="large"
+                dropdownRender={val?.dropdownRender}
               />
             </Form.Item>
           );
@@ -192,6 +204,26 @@ const FormGenerator = ({
               key={key}
             >
               <Input
+                placeholder={val.placeholder}
+                disabled={val?.disabled}
+                readOnly={val?.readOnly}
+                addonBefore={val.addonBefore}
+                size="large"
+                type="text"
+              />
+            </Form.Item>
+          );
+        }
+
+        if (val.type == "password") {
+          return (
+            <Form.Item
+              name={val.name}
+              label={val.label}
+              rules={val?.rules}
+              key={key}
+            >
+              <Input.Password
                 placeholder={val.placeholder}
                 disabled={val?.disabled}
                 readOnly={val?.readOnly}
@@ -219,6 +251,42 @@ const FormGenerator = ({
                   addonBefore={val.addonBefore}
                   size="large"
                   type="number"
+                />
+              </Form.Item>
+              {val?.bottomCustom}
+            </>
+          );
+        }
+        if (val.type == "numberwithcurrency") {
+          const formatter = (value: number | string | undefined) => {
+            if (!value) return "Rp 0";
+            return `Rp ${value}`
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Tambahkan titik setiap 3 digit
+          };
+
+          const parser = (value: string | undefined) => {
+            if (!value) return 0;
+            return parseFloat(value.replace(/[^\d]/g, "")); // Hapus karakter non-numerik
+          };
+          return (
+            <>
+              <Form.Item
+                name={val.name}
+                label={val.label}
+                rules={val?.rules}
+                key={key}
+              >
+                <InputNumber
+                  className="w-full"
+                  placeholder={val.placeholder}
+                  disabled={val?.disabled}
+                  formatter={formatter}
+                  parser={parser}
+                  min={0}
+                  readOnly={val?.readOnly}
+                  addonBefore={val.addonBefore}
+                  size="large"
                 />
               </Form.Item>
               {val?.bottomCustom}

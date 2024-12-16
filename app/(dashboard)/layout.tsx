@@ -5,6 +5,8 @@ import { GoDotFill } from "react-icons/go";
 import { TbTrendingUp } from "react-icons/tb";
 import { PiUser, PiWallet } from "react-icons/pi";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
+import Cookie from "cookies-js";
 const layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const pathName = usePathname();
@@ -26,6 +28,14 @@ const layout = ({ children }: { children: React.ReactNode }) => {
       icon: PiUser,
     },
   ];
+
+  useEffect(() => {
+    const token = Cookie.get(process.env.COOKIE_NAME as string);
+
+    if (!token) {
+      router.push("/login");
+    }
+  }, [router]);
   return (
     <div className="relative pb-12">
       {children}
