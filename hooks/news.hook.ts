@@ -14,7 +14,6 @@ import {
   BaseResponseDetailType,
   BaseResponseListType,
 } from "@/type/shared.type";
-import { ProgramType } from "@/type/program.type";
 import { NewsPostType, NewsType } from "@/type/news.type";
 
 export const usePostNews = () => {
